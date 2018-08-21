@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>webdevelop</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous" >
+  <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon">
+</head>
+<body>
+  <header>
+    <div class="header-pc">
+      <%= render "application/header_pc" %>
+    </div>
+    <div class="header-fixed">
+      <%= render "application/header_fixed" %>
+    </div>
+  </header>
+    <% if flash[:notice] %>
+      <div id="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    
+    <%= yield %>
+
+  <footer>
+    <div class="footer-left">
+      <ul>
+        <li><%= link_to("About", "/about", class:"btn link") %></li>
+      </ul>
+    </div>
+    <div class="footer-right">
+      <ul>
+        <li><%= link_to("Contact us", "/contact", class:"btn link") %></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

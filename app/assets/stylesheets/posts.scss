@@ -1,0 +1,110 @@
+/*  postscss*/
+.posts-index {
+  color: rgba(0,0,0,0.6);
+}
+
+
+.new-post-form {
+  width: 80%;
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 5px 20px 20px 20px;
+  border: 1px solid rgba(0,0,0,0.7);
+  border-radius: 8px;
+}
+
+.new-post-userinfo{
+  margin-top: 10px;
+  font-size: 20px;
+  color: rgba(0,0,0,0.7);
+  letter-spacing: 1px;
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+.new-post-text {
+  margin: 10px 0px;
+}
+
+.new-post-text input {
+  display: block;
+  margin-top: 20px;
+}
+
+.new-post-text textarea {
+  display: block;
+  width: 100%;
+  height: 100px;
+  margin: 20px auto ;
+}
+
+.new-post-submit {
+  margin: 10px 0px;
+}
+
+.posts-each {
+  width: 80%;
+  max-width: 800px;
+  margin: 0px auto;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 10px;
+  position: relative;
+}
+
+.post-detail-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-indent:-999px;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.post-detail-link:hover {
+  background-color: rgba(255,255,255,0.2);
+  box-shadow: 5px 5px rgba(0,0,0,0.5);
+}
+
+.posts-each-user-info {
+  width: 100%;
+  padding: 5px 15px;
+  font-size: 35px;
+}
+
+.posts-each-user-info a {
+  color: rgba(0,0,0,0.6);
+  font-size: 35px;
+  z-index: 2;
+}
+
+.posts-each-user-image {
+  vertical-align: middle;
+  border-radius: 50%;
+  padding: 5px 5px;
+}
+
+.link-user:hover {
+  color: rgba(0,0,0,0.8);
+}
+
+.posts-each-photo {
+  width: 90%;
+  max-width: 700px;
+  margin: 10px auto;
+}
+
+.posts-each-content {
+  width: 90%;
+  max-width: 700px;
+  height: 50px;
+  margin: 5px auto;
+  text-align: left;
+}
+
+.posts-each-edit {
+  width: 90%;
+  max-width: 700px;
+  margin: 5px auto;
+  text-align: right;
+}

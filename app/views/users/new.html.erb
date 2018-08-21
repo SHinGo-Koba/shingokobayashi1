@@ -1,0 +1,43 @@
+<div class="main signup">
+  <div class="container">
+    <div class="signup-box">
+      <div class="signup-box-header">
+        Sign up
+      </div>
+      <%= form_for(@user, url: users_path) do |f| %>
+      <div class="signup-box-contents">
+        <div class="signup-box-contents-left">
+          <div class="signup-box-contents-content">
+            <%= f.label :name %>
+            <%= f.text_field :name, value: @user.name %>
+          </div>
+          <div class="signup-box-contents-content">
+            <%= f.label :email %>
+            <%= f.email_field :email, value: @user.email %>
+          </div>
+          <div class="signup-box-contents-content"> 
+            <%= f.label :email_confirmation %>
+            <%= f.email_field :email_confirmation, value: @user.email_confirmation %>
+          </div>
+          <div class="signup-box-contents-content">
+            <%= f.label :password %>
+            <%= f.password_field :password, value: @user.password %>
+          </div>
+          <div class="signup-box-contents-content">
+            <%= f.label :password_confirmation %>
+            <%= f.password_field :password_confirmation, value: @user.password_confirmation %>
+          </div>
+        </div><!--  
+      --><div class="signup-box-contents-right">
+          <%= f.submit "Signup", class:"btn submit-login" %>
+          <ul>
+          <% @user.errors.full_messages.each do |error| %>
+            <li style="color: red; font-size: 14px;"><%= error %></li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

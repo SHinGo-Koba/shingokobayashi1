@@ -1,0 +1,13 @@
+<div class="main posts-index">
+  <div class="container">
+  <% @posts.each do |post| %>
+    <div class="posts-each">
+
+      <%= render "application/post", post: post %>
+
+    <%= link_to("/posts/#{post.id}", class:"btn post-detail-link") do %>
+    <% end %>
+    </div>
+  <% end %>
+  </div>
+</div>

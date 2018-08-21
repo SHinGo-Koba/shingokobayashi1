@@ -1,0 +1,16 @@
+<div class="main posts-index">
+  <div class="container">
+    <div class="user-info">
+      <% if @current_user.user_image_name %>
+        <%= image_tag(@current_user.user_image_url(:standard), class:"posts-each-user-image", style:"width=10vw;") %>
+      <% else %>
+        <p style="font-size: 50px"><i class="fas fa-user" ></i></p>
+      <% end %>
+      <P style="font-size: 50px"> <%= @current_user.name %> </P>
+      <%= form_tag("/user/#{@current_user.id}", {multipart: true}) do %> 
+        <input name="user_image" type="file" style="display: block" >
+        <input type="submit" value="Chage your image", style:"font-size: 15px; color: rgba(0,0,0,0.6);">
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+// Place all the styles related to the user controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-info {
+  display: block;
+  width: 50%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px 0px;
+  float: bottom;
+  text-align: center;
+}
+
+.user-info p {
+  display: block;
+}
+
+.user-image {
+  display: block;
+  width: 30%;
+  margin: 0px auto;
+  border-radius: 50%;
+}

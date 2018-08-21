@@ -1,0 +1,26 @@
+<div class="main login_form">
+  <div class="container">
+    <%= form_tag("/login") do %>
+    <div class="login-box">
+      <div class="login-box-header">
+        Login
+      </div>
+      <div class="login-box-contents">
+        <div class="login-box-contents-left">
+          <div class="login-box-contents-content">
+            <p><span>User Name</span></p>
+            <input name="name" type="string">
+          </div>
+          <div class="login-box-contents-content">
+            <p><span>Password</span></p>
+            <input name="password" type="password">
+          </div>
+        </div><!--
+      --><div class="login-box-contents-right">
+          <input class="btn submit-login" type="submit" value="Login">
+        </div><!--
+      --></div>
+    </div>
+    <% end %>
+  </div>
+</div>

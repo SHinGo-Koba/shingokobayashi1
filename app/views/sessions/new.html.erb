@@ -1,0 +1,26 @@
+<div class="main login_form">
+  <div class="container">
+    <%= form_for(:session, url: login_path) do |f| %>
+    <div class="login-box">
+      <div class="login-box-header">
+        Login
+      </div>
+      <div class="login-box-contents">
+        <div class="login-box-contents-left">
+          <div class="login-box-contents-content">
+            <%= f.label "User Name" %>
+            <%= f.text_field :name %>
+          </div>
+          <div class="login-box-contents-content">
+            <%= f.label "Password" %>
+            <%= f.password_field :password %>
+          </div>
+        </div><!--
+      --><div class="login-box-contents-right">
+          <%= f.submit "Login", class: "btn submit-login" %>
+        </div><!--
+      --></div>
+    </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="main posts-index">
+  <div class="container">
+    <div class="posts-each">
+
+      <%= render "application/post", post: @post %>
+
+    <% if @current_user %>
+      <% if @post.user_id == @current_user.id %>
+        <div class="posts-each-edit">
+          <%= link_to "Delete", "/posts/#{@post.id}", method: :delete, data: {confirm: "Are you sure?"}, style: "font-size: 15px; color: rgba(0,0,0,0.6);" %> 
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
+</div>

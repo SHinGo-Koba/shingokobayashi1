@@ -1,0 +1,12 @@
+<ul style=" height: 100%;">
+  <% if !current_user.nil? %>
+    <li><%= link_to("Hello, #{current_user.name}!","/user/#{current_user.id}", class:"btn link") %></li><!--
+ --><li><%= link_to("NOW!", "/posts", class:"btn link") %></li><!--
+ --><li><%= link_to("Tweet", "/posts/new", class:"btn link") %></li><!--
+ --><li><%= link_to("Logout", "/logout", method: :delete, class:"btn link" ) %></li>
+  <% else %>
+    <li><%= link_to("NOW!", "/posts/index", class:"btn link") %></li><!--
+ --><li><%= link_to("Signup", new_user_path, class:"btn link") %></li><!--
+ --><li><%= link_to("Login", "/login", class:"btn link") %></li>
+  <% end %>
+</ul>
