@@ -51,7 +51,7 @@ gem 'cloudinary'
 
 gem 'carrierwave'
 
-gem 'heroku'
+# gem 'heroku'
 
 gem 'file_validators'
 
