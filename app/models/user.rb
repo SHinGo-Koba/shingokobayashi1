@@ -7,11 +7,11 @@ class User < ActiveRecord::Base
     presence: {message: "Please fill out."},
     uniqueness: {message: "Someone has already used."}
 
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, 
     presence: {message: "Please fill in your email"},
     confirmation: true,
     format: { with: VALID_EMAIL_REGEX, message: " is invalid." }
-    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :password,
     presence: { message: "Please fill out." }

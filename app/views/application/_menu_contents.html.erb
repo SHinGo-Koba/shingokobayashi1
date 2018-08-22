@@ -5,7 +5,7 @@
  --><li><%= link_to("Tweet", "/posts/new", class:"btn link") %></li><!--
  --><li><%= link_to("Logout", "/logout", method: :delete, class:"btn link" ) %></li>
   <% else %>
-    <li><%= link_to("NOW!", "/posts/index", class:"btn link") %></li><!--
+    <li><%= link_to("NOW!", posts_path, class:"btn link") %></li><!--
  --><li><%= link_to("Signup", new_user_path, class:"btn link") %></li><!--
  --><li><%= link_to("Login", "/login", class:"btn link") %></li>
   <% end %>

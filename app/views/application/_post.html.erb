@@ -4,7 +4,7 @@
   <% else %>
     <i class="fas fa-user" ></i>
   <% end %>
-  <%= link_to(post.user.name, "/user/#{post.user.id}", class:"btn link-user") %>
+  <%= link_to(post.user.name, "/users/#{post.user.id}", class:"btn link-user") %>
 </div>
 <% if post.post_image_name %>
   <div class="posts-each-photo">

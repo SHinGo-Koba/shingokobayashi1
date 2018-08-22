@@ -3,11 +3,6 @@ class UsersController < ApplicationController
   before_action :confirm_logout, {only:[:create]}
   # before_action :method_out_of_service, {only:[:create]}
 
-  def index
-    @user = User.find_by(id: params[:user_id])
-    @user_posts = @user.posts.order(created_at: :desc)
-  end
-  
   def new
     @user = User.new()
   end
@@ -34,8 +29,13 @@ class UsersController < ApplicationController
     end
   end
   
+  def show
+    @user = User.find_by(id: params[:id])
+    @user_posts = @user.posts.order(created_at: :desc)
+  end
+
+  
   def edit
-    
   end
   
   def update
