@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action:authenticate_user, {only:[:new]}
   before_action:forbid_access_posts, {only:[:destroy]}
+  before_action :method_out_of_service, {only:[:create]}
 
 
   def index
