@@ -1,20 +1,15 @@
 class PostimageUploader < CarrierWave::Uploader::Base
-  
   include Cloudinary::CarrierWave
-  
-  # process :convert => "png"
+    
   process :tags => ["post_image"]
-  
-  version :post_ori do
+  process :resize_to_fit => [1000,1000]
 
+  version :post_ori do
   end
 
-  # def extension_whitelist do
-  #   %w(jpg jpeg gif png)
-  # end
-  
-  # def content_type_whitelist do
-  #   /image\//
-  # end
+
+  def store_dir
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  end
 
 end

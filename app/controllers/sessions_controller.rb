@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :method_out_of_service, {only:[:create]}
+  # before_action :method_out_of_service, {only:[:create]}
 
   def new
     
@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       reset_session
       log_in(user)
-      redirect_to("/posts/index")
+      redirect_to posts_path
       flash[:notice] = "Login successfully"
     else
       flash.now[:notice] = "Invalid name/password combination"

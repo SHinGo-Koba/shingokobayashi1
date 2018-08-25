@@ -1,22 +1,23 @@
 <div class="main new-post">
   <div class="container">
-    <%= form_tag("/posts/create", {multipart: true}) do %>
+    <%= form_for(@post, url: posts_path, multipart: true) do |f| %>
     <div class="new-post-form">
       <div class="new-post-userinfo">
         <img src="">
         <%= session[:user_name] %>
       </div>
       <div class="new-post-text">
-        <input name="post_image" type="file">
-<%
-=begin
-f.hidden_field :post_image_cache
-=end
-%>
-        <textarea name="content" type="text"></textarea>
+        <%= f.label :post_image, "Attached image" %>
+        <%= f.file_field :post_image %>
+        <%= f.hidden_field :post_image_cache %>
+        <!--<input name="post_image" type="file">-->
+        <%= f.label :content, "Content" %>
+        <%= f.text_area :content %>
+        <!--<textarea name="content" type="text"></textarea>-->
       </div>
       <div class="new-post-submit">
-        <input type="submit" value="Tweet!">
+        <!--<input type="submit" value="Tweet!">-->
+        <%= f.submit "Tweet!" %>
       </div>
     </div>
     <% end %>
