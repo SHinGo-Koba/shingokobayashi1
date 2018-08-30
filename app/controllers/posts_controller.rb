@@ -13,7 +13,6 @@ class PostsController < ApplicationController
   end
   
   def create
-    @post_image_name = "#{rand.to_s[2..8]}.jpg"
     @post = Post.new(post_params)
     
     if @post.save
@@ -46,10 +45,7 @@ class PostsController < ApplicationController
     end
   
     def post_params
-      params.require(:post).permit(:content,:post_image).merge(
-          user_id: session[:user_id],
-          post_image_name: @post_image_name,
-          )
+      params.require(:post).permit(:content,:post_image).merge(user_id: session[:user_id])
     end
 
 end

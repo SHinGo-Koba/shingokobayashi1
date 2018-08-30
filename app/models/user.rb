@@ -25,13 +25,8 @@ class User < ActiveRecord::Base
       message: 'image should be less than %{count}'},
     file_content_type: { 
       allow: ["image/jpeg", "image/jpg", "image/png", "image/gif"],
-      mode: :strict,
+      # mode: :strict,
       message: 'only %{types} are allowed'},
   }
 
-
-  # def posts
-  #   return Post.where(user_id: self.id)
-  # end
-  
 end

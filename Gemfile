@@ -22,6 +22,7 @@ end
 
 group :production do
   gem 'pg','~> 0.20'
+  gem 'cloudinary'
   gem 'thin'
 end
 
@@ -47,9 +48,9 @@ gem 'bcrypt'
 
 gem 'jquery-turbolinks'
 
-gem 'cloudinary'
-
 gem 'carrierwave'
+
+gem 'mini_magick'
 
 # gem 'heroku'
 

@@ -8,7 +8,7 @@
 </div>
 <% if post.post_image_name %>
   <div class="posts-each-photo">
-    <%= image_tag(post.post_image_url(:post_ori), style:"width:100%") %>
+    <%= image_tag(post.post_image_url, style:"width:100%") %>
   </div>
 <% end %>
 <div class="posts-each-content">
