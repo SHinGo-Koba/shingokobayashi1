@@ -2,8 +2,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   mount_uploader :post_image, PostimageUploader
   
-  validates :user_id, presence: true
-  validates :content, presence: true
+  validates :user_id, :content, presence: true
   validates :post_image, {
     file_size: {
       less_than_or_equal_to: 1.megabyte,
