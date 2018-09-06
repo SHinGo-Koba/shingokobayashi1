@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  # before_action :method_out_of_service, {only:[:create]}
+  before_action :method_out_of_service, {only:[:create]}
 
   def new
     
