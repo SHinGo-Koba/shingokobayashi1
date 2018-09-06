@@ -1,20 +1,27 @@
 class User < ActiveRecord::Base
+  before_save { self.email = email.downcase }
   has_secure_password
   has_many :posts
   mount_uploader :user_image, UserimageUploader
   
   validates :name,
-    presence: {message: "Please fill out."},
-    uniqueness: {message: "Someone has already used."}
+    presence: { message: "Please fill out." },
+    uniqueness: { message: "Someone has already used." },
+    length: { maximum: 25 }
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)\.[a-z]+\z/i
   validates :email, 
-    presence: {message: "Please fill in your email"},
+    presence: { message: "Please fill in your email" },
+    uniqueness: { 
+      case_sensitive: false,
+      message: "Someone has already used."},
     confirmation: true,
-    format: { with: VALID_EMAIL_REGEX, message: " is invalid." }
+    format: { with: VALID_EMAIL_REGEX, message: " is invalid." },
+    length: { maximum: 255 }
 
   validates :password,
-    presence: { message: "Please fill out." }
+    presence: { message: "Please fill out." },
+    length: { minimum: 6 }
 
   validates :email_confirmation, :password_confirmation,
     presence: true
