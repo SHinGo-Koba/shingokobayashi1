@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
-  resources :users, except: [:index, :destroy]
+
+  get "login", to: "sessions#new"
+  post "login", to: "sessions#create"
+  delete "logout", to: "sessions#destroy"
+  
+  get "about", to: "home#about"
+  get "contact", to: "home#contact"
+  get "signup", to: "users#new"
+  post "signup", to: "users#create" 
+
+  resources :users, except: [:index, :new, :create, :destroy]
   resources :posts, except: [:edit, :update]
 
-  get "login" => "sessions#new"
-  post "login" => "sessions#create"
-  delete "logout" => "sessions#destroy"
-  
-  get "about" => "home#about"
-  get "contact" => "home#contact"
-  
   root "home#index"  
 
 end
