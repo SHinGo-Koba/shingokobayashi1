@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
     uniqueness: { message: "Someone has already used." },
     length: { maximum: 25 }
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, 
     presence: { message: "Please fill in your email" },
     uniqueness: { 

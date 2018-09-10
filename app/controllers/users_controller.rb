@@ -4,20 +4,12 @@ class UsersController < ApplicationController
   before_action :method_out_of_service, {only:[:create]}
 
   def new
-    @user = User.new()
+    @user = User.new
   end
   
   def create
-    # @user = User.new(
-    #     name: params[:name],
-    #     email: params[:email],
-    #     password: params[:password]
-    #     )
     @user = User.new(user_params)
-    # @user.name = params[:name]
-    # @user.email = params[:email]
-    # @user.password = params[:password]
-    
+
     if @user.save
       reset_session
       log_in(@user)
@@ -66,7 +58,7 @@ class UsersController < ApplicationController
   
   def user_params
     params.fetch(:user, {}).permit(:name, :email, :email_confirmation,
-    :password,:password_confirmation, :user_image, :user_image_name)
+    :password,:password_confirmation)
   end
 
 end

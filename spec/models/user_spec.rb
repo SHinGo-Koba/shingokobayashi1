@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   
   it "is valid with a name, email, email_confirmation, password and password_confirmation" do
-    user = FactoryBot.build(:user)
-    expect(user).to be_valid
+      user = FactoryBot.build(:user)
+      expect(user).to be_valid
   end
   
   it "is invalid without a name" do

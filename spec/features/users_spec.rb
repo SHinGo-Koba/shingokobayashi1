@@ -8,8 +8,8 @@ RSpec.feature "Users", type: :feature do
       fill_in "Name", with: "user1"
       fill_in "Email", with: "user1@example.com"
       fill_in "Email confirmation", with: "user1@example.com"
-      fill_in "Password", with: "user1"
-      fill_in "Password confirmation", with: "user1"
+      fill_in "Password", with: "user12018"
+      fill_in "Password confirmation", with: "user12018"
       click_button "Signup"
   
       expect(page).to have_content "Welcome, user1!"  
