@@ -6,7 +6,7 @@ RSpec.feature "Posts", type: :feature do
   
   scenario "user posts with a valid file" do
     expect {
-      login_in_as user
+      login_as user
       find("div.header-pc").find_link("Tweet").click
       fill_in "Content", with: "test1"
       attach_file "Attached image", "#{Rails.root}/spec/files/validTestPhoto.JPG"
@@ -18,7 +18,7 @@ RSpec.feature "Posts", type: :feature do
   
   scenario "user posts with an invalid data type file" do
     expect {
-      login_in_as user
+      login_as user
       find("div.header-pc").find_link("Tweet").click
       fill_in "Content", with: "test2"
       attach_file "Attached image", "#{Rails.root}/spec/files/invalidFile.txt"
@@ -30,7 +30,7 @@ RSpec.feature "Posts", type: :feature do
 
   scenario "user posts with an invalid excessive data file" do
     expect {
-      login_in_as user
+      login_as user
       find("div.header-pc").find_link("Tweet").click
       fill_in "Content", with: "test3"
       attach_file "Attached image", "#{Rails.root}/spec/files/invalidExcessiveFile.jpg"

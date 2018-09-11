@@ -16,7 +16,7 @@
     <% @user_posts.each do |user_post| %>
       <div class="posts-each">
 
-        <%= render "application/post", post: user_post %>
+        <%= render "shared/post", post: user_post %>
 
       </div>
     <% end %>

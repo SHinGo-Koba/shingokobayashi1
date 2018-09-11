@@ -3,7 +3,7 @@
   <% @posts.each do |post| %>
     <div class="posts-each">
 
-      <%= render "application/post", post: post %>
+      <%= render "shared/post", post: post %>
 
     <%= link_to("/posts/#{post.id}", class:"btn post-detail-link") do %>
     <% end %>

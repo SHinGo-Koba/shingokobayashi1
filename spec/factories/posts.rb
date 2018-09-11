@@ -1,8 +1,9 @@
 FactoryBot.define do
   factory :post do
-    content "test!"
-    post_image "test.jpg"
-        
     association :user
+
+    sequence(:content) { |n| "test#{n}" }
+    user_id { user.id }
+    
   end
 end

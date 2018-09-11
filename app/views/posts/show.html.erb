@@ -2,7 +2,7 @@
   <div class="container">
     <div class="posts-each">
 
-      <%= render "application/post", post: @post %>
+      <%= render "shared/post", post: @post %>
 
     <% if @current_user %>
       <% if @post.user_id == @current_user.id %>
