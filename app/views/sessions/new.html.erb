@@ -15,6 +15,10 @@
             <%= f.label :password, "Password" %>
             <%= f.password_field :password %>
           </div>
+          <%= f.label :remember_me, class: "checkbox inline" do %>
+            <%= f.check_box :remember_me %>
+            <span>Remember me on this computer</span>
+          <% end %>
         </div><!--
       --><div class="login-box-contents-right">
           <%= f.submit "Login", class: "btn submit-login" %>

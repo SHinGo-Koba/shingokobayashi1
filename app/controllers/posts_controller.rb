@@ -1,8 +1,7 @@
 class PostsController < ApplicationController
-  before_action:authenticate_user, {only:[:new]}
-  before_action:forbid_access_posts, {only:[:destroy]}
-  before_action:method_out_of_service, {only:[:create]}
-
+  before_action :confirm_login, { only: [:new, :create] }
+  before_action :forbid_access_posts, { only: [:destroy] }
+  before_action :method_out_of_service, { only: [:create] }
 
   def index
     @posts = Post.all.order(created_at: :desc)
@@ -34,18 +33,9 @@ class PostsController < ApplicationController
     redirect_to("/posts/index")
   end
   
-  
   private
-    def forbid_access_posts
-      @post = Post.find_by(id: params[:id])
-      if @post.user_id != @current_user.id
-        redirect_to("/posts/index")
-        flash[:notice] = "I'm sorry you're not allowed this"
-      end
-    end
-  
-    def post_params
-      params.require(:post).permit(:content,:post_image).merge(user_id: session[:user_id])
-    end
+  def post_params
+    params.require(:post).permit(:content,:post_image).merge(user_id: session[:user_id])
+  end
 
 end

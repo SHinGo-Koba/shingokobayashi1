@@ -1,8 +1,9 @@
 class SessionsController < ApplicationController
-  before_action :method_out_of_service, {only:[:create]}
+  # before_action :method_out_of_service, {only:[:create]}
+  before_action :confirm_logout, { only: [:new, :create] }
 
   def new
-    
+    flash.now[:notice] = "Welcome, Login"
   end
   
   def create
@@ -10,7 +11,8 @@ class SessionsController < ApplicationController
     
     if user && user.authenticate(params[:session][:password])
       reset_session
-      log_in(user)
+      log_in user
+      params[:session][:remember_me] == "1" ? remember(user) : forget(user)
       redirect_to posts_path
       flash[:notice] = "Login successfully"
     else
@@ -21,10 +23,15 @@ class SessionsController < ApplicationController
   end
   
   def destroy
-    reset_session
-    @current_user = nil
+    if logged_in?
+      forget current_user
+      reset_session
+      @current_user = nil
+      flash[:notice] = "Logout successfully"
+    else
+      flash[:notice] = "Already Logouted "
+    end
     redirect_to("/")
-    flash[:notice] = "Logout successfully"
-
   end
+  
 end
