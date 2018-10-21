@@ -26,6 +26,10 @@ module SessionsHelper
     end
   end
   
+  def current_user?(user)
+    user == current_user
+  end
+  
   def forget(user)
     user.forget
     cookies.delete(:user_id)
@@ -44,6 +48,12 @@ module SessionsHelper
       redirect_to root_path
       flash[:notice] = "Please logout"
     end
+  end
+  
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to root_path unless current_user?(@user)
+    flash[:notice] = "Invalid access"
   end
   
 end

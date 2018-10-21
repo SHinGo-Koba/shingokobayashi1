@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  before_action :forbid_access_user, { only: [:edit, :edit_user_image] }
-  before_action :confirm_logout, { only: [:new, :create] }
-  before_action :method_out_of_service, { only: [:create] }
+  before_action :confirm_login, only: [:edit, :edit_user_image]
+  before_action :correct_user, only: [:edit, :edit_user_image]
+  before_action :confirm_logout, only: [:new, :create] 
+  before_action :method_out_of_service, only: [:create] 
 
   def new
     @user = User.new
