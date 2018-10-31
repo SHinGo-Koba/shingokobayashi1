@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   post "signup", to: "users#create" 
 
   resources :users, except: [:index, :new, :create, :destroy]
-  resources :posts, except: [:edit, :update]
+  resources :posts, except: [:edit, :update] do
+    resources :comments, shallow: true, only: [:create, :destroy]
+  end
 
   root "home#index"  
 
