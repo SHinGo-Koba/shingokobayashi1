@@ -9,6 +9,13 @@ module LoginSupport
       page.uncheck("session_remember_me")
     end
     click_button "Login"
-
+  end
+  
+  def post_login_as(user, remember_me)
+    post login_path, session: {
+      name: user.name,
+      password: user.password,
+      remember_me: remember_me,
+     }
   end
 end
