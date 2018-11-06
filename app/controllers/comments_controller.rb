@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :confirm_login
   
   def create
     @comment = Comment.new(comment_params)
@@ -8,7 +9,7 @@ class CommentsController < ApplicationController
       flash[:notice] = "Commented!"
     else
       render "/posts/index"
-      flash.now[:notice] = "It couldn't be commented"
+      flash.now[:notice] = "That post couldn't be found"
     end
   end
   
