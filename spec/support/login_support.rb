@@ -1,6 +1,7 @@
 module LoginSupport
   
   def login_as(user, remember_me)
+    visit login_path
     fill_in "User Name", with: user.name
     fill_in "Password", with: user.password
     if remember_me == true
