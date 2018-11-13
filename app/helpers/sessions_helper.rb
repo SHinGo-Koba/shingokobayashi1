@@ -52,8 +52,10 @@ module SessionsHelper
   
   def correct_user
     @user = User.find(params[:id])
-    redirect_to root_path unless current_user?(@user)
-    flash[:notice] = "Invalid access"
+    if !current_user?(@user)
+      redirect_to root_path 
+      flash[:notice] = "Invalid access"
+    end
   end
   
 end
