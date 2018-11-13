@@ -3,8 +3,9 @@
   <% if @posts %>
     <% @posts.each do |post| %>
       <div class="posts-each">
-        <%= render "shared/post", post: post %>
-        <%= link_to("/posts/#{post.id}", class:"btn post-detail-link") %>
+        <%= link_to post_path(post), { class: "btn post-detail-link" } do 
+           render "shared/post", post: post 
+        end %>
       </div>
     <% end %>
   <% end %>
