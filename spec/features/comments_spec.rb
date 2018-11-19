@@ -20,7 +20,14 @@ RSpec.feature "Comments", type: :feature do
       
     }.to change(Comment, :count).by(1)
     expect(page).to have_current_path post_path(1)
-    expect(page.body).to include("great!")
+    
+    # within('.posts-each-comment') do
+    #   to have_text "user2"
+    #   to have_text "great!"
+    # end
+    expect(find(".posts-each-comment")).to have_text "user2"
+    expect(find(".posts-each-comment")).to have_text "great!"
+    
   end
   
   scenario "user not logged in can't comment" do

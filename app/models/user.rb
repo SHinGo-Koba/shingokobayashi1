@@ -2,7 +2,9 @@ class User < ActiveRecord::Base
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
   has_secure_password
+
   has_many :posts
+  has_many :comments
   mount_uploader :user_image, UserimageUploader
   
   validates :name,

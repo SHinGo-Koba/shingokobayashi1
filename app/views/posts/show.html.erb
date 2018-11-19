@@ -5,6 +5,7 @@
       <% if @comments %>
         <% @comments.each do |comment| %>
           <div class="posts-each-comment">
+            <%= comment.user.name %>
             <%= comment.comment %>
           </div>
         <% end %>
