@@ -22,4 +22,21 @@ RSpec.feature "Comments", type: :feature do
     expect(page).to have_current_path post_path(1)
     expect(page.body).to include("great!")
   end
+  
+  scenario "user not logged in can't comment" do
+    expect{
+      visit root_path
+      find("div.header-pc").find_link("NOW!").click
+      expect(page).to have_current_path posts_path
+
+      find("div.main").find("div.posts-each").find_link("test2").click
+      expect(page).to have_current_path post_path(1)
+
+      fill_in "comment[comment]", with: "great!"
+      click_button "Comment!"
+      expect(page).to have_current_path login_path
+      
+    }.not_to change(Comment, :count)
+    expect(page).to have_content "Please login"
+  end
 end
