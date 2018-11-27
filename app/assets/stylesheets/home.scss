@@ -31,7 +31,9 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 input {
-  background-color: transparent;
+  font-size: 14px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
   outline-width: 0;
 }
 

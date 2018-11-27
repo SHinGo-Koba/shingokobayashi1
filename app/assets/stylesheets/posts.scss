@@ -97,7 +97,7 @@
 .posts-each-content {
   width: 90%;
   max-width: 700px;
-  height: 50px;
+  // height: 50px;
   margin: 5px auto;
   text-align: left;
 }
@@ -112,11 +112,20 @@
 .posts-each-comment {
   width: 90%;
   max-width: 700px;
-  margin: 5px auto;
+  margin: 10px auto;
+  padding: 5px 0px 15px 0px;
+  border-top: 1px solid rgba(0,0,0,0.2);
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.posts-each-comment a {
+  font-size: 15px;
 }
 
 .posts-each-input-comment {
   width: 90%;
   max-width: 700px;
-  margin: 0 0 5px 40px;
+  margin: 0 0 10px 45px;
 }
+
+.
