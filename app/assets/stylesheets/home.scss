@@ -269,7 +269,20 @@ footer a {
 }
 
 .login-box-contents-left input {
-  width: 80%;
+  width: 90%;
+}
+
+
+.login-box-remember_me span {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 12px;
+}
+
+.login-box-remember_me input[type="checkbox"] {
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .login-box-contents-right {
