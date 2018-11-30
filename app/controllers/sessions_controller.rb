@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
   before_action :confirm_logout, { only: [:new, :create] }
 
   def new
-    flash.now[:notice] = "Welcome, Login"
   end
   
   def create

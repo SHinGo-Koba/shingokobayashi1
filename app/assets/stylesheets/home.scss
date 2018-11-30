@@ -31,7 +31,9 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 input {
-  background-color: transparent;
+  font-size: 14px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
   outline-width: 0;
 }
 
@@ -267,7 +269,20 @@ footer a {
 }
 
 .login-box-contents-left input {
-  width: 80%;
+  width: 90%;
+}
+
+
+.login-box-remember_me span {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 12px;
+}
+
+.login-box-remember_me input[type="checkbox"] {
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .login-box-contents-right {
