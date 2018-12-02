@@ -1,0 +1,6 @@
+<% @comments.each do |comment| %>
+  <div class="posts-each-comment">
+    <%= link_to "#{comment.user.name}", user_path(comment.user.id) %>
+    <%= comment.comment %>
+    </div>
+<% end %>
