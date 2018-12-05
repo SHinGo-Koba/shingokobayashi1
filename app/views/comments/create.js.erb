@@ -1,3 +1,16 @@
-$("#after-commented").html(
-  "<%= escape_javascript(render "comments/comment") %>"
-);
+<% if @comments %>
+  $("#after-commented").html(
+    "<%= escape_javascript(render "comments/comment") %>"
+  );
+<% end %>
+
+$("#text-field-comment").val("");
+
+$.ajax({
+  complete: function(){
+    var flashAjax = $("#flash-ajax");
+    flashAjax.html("<%= flash[:notice] %>");
+    flashAjax.slideDown("slow");
+    flashAjax.delay(1000).slideUp("slow");
+  }
+});
