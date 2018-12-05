@@ -4,13 +4,14 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @post = Post.find_by(id: params[:post_id])
-    if @post && @comment.save
-      # redirect_to post_path(params[:post_id])
-      @comments = @post.comments
-      flash.now[:notice] = "Commented!"
-    else
-      render "/posts/index"
-      flash.now[:notice] = "That post couldn't be found"
+    
+    respond_to do |format|
+      if @post && @comment.save
+        @comments = @post.comments
+        format.js { flash[:notice] = "Commented!" }
+      else
+        format.js { flash[:notice] = "That post couldn't be found" }
+      end
     end
   end
   

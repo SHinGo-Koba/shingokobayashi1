@@ -32,12 +32,19 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find_by(id: params[:id])
     @post.destroy
-    redirect_to("/posts/index")
+    redirect_to posts_path
   end
   
   private
-  def post_params
-    params.require(:post).permit(:content,:post_image).merge(user_id: session[:user_id])
-  end
+    def post_params
+      params.require(:post).permit(:content,:post_image).merge(user_id: session[:user_id])
+    end
 
+    def forbid_access_posts
+      @post = Post.find_by(id: params[:id])
+      unless current_user?(@post.user)
+        redirect_to posts_path
+        flash[:notice] = "I'm sorry you're not allowed this"
+      end
+    end
 end

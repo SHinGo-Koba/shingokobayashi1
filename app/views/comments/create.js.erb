@@ -1,3 +1,20 @@
-$("#after-commented").html(
-  "<%= escape_javascript(render "comments/comment") %>"
-);
+<% if @comments %>
+  $("#after-commented").html( "<%= escape_javascript(render "comments/comment") %>" );
+<% end %>
+
+$("#text-field-comment").val("");
+
+$.ajax({
+  complete: function(){
+    var main = $(".main");
+    var header = $("header");
+    var flashAjax = $("#flash-ajax");
+    var headerHeight = header.outerHeight(true);
+    var paddingTopCanged = main.css('padding-top', headerHeight-1);
+    var topChanged = flashAjax.css('top', headerHeight-1);
+    $(window).on('resize',function() { paddingTopCanged; topChanged; });
+    flashAjax.html("<%= flash[:notice] %>");
+    flashAjax.slideDown("slow");
+    flashAjax.delay(1000).slideUp("slow");
+  }
+});
