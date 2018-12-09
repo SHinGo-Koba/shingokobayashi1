@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :confirm_login, { only: [:new, :create] }
   before_action :forbid_access_posts, { only: [:destroy] }
-  before_action :method_out_of_service, { only: [:create] }
+  # before_action :method_out_of_service, { only: [:create] }
 
   def index
     @posts = Post.all.order(created_at: :desc)

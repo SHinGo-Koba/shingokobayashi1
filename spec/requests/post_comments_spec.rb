@@ -7,12 +7,12 @@ RSpec.describe "PostComments", type: :request do
   describe "it works" do
     it "works successfully" do
       post_login_as(user, "1")
-      post post_comments_path(post_id: post1.id), comment: {
-        comment: "test"
-      }
-    expect(response).to redirect_to post_path(post1.id)
-    follow_redirect!
-    expect(response).to have_http_status(200)
+      expect do
+        xhr :post, post_comments_path(post_id: post1.id), comment: {
+          comment: "test"
+        }
+      end.to change(Comment, :count).by(1)
+      expect(response).to have_http_status(200)
     end
   end
   
@@ -21,11 +21,11 @@ RSpec.describe "PostComments", type: :request do
       post_login_as(user, "1")
       follow_redirect!
       expect(response.body).to include("Login successfully")
-      post post_comments_path(post_id: "100"), comment: { 
-        comment: "test",
-        }
-      expect(response).to render_template "posts/index"
-      expect(response).to have_http_status(200)
+      expect do
+        xhr :post, post_comments_path(post_id: "100"), comment: { 
+          comment: "test",
+          }
+      end.not_to change(Comment, :count)
       expect(request.flash[:notice]).to include("That post couldn't be found")
     end
     
