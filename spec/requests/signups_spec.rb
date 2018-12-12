@@ -22,11 +22,11 @@ RSpec.describe "Signups", type: :request do
           password_confirmation: "user102018",
           } 
         }
-        expect(response).to redirect_to "/posts"
+        expect(response).to redirect_to posts_path
         follow_redirect!
         # expect(response.body).to include("piyopiyo something wrong")
       }.to change(User, :count).by(1)
-      expect(response).to render_template "posts/index"      
+      expect(response).to render_template "posts/index" 
     end
   end
 end
