@@ -18,6 +18,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
   gem 'launchy', '~> 2.4.3'
+  gem 'rails-controller-testing', '~> 1.0.0'
 end
 
 group :production do

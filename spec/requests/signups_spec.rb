@@ -14,12 +14,14 @@ RSpec.describe "Signups", type: :request do
       # user_params = FactoryBot.attributes_for(:user)
       get signup_path
       expect {
-        post signup_path, { user: {
-          name: "user10",
-          email: "user10@example.com",
-          email_confirmation: "user10@example.com",
-          password: "user102018",
-          password_confirmation: "user102018",
+        post signup_path,
+        params: {
+           user: {
+            name: "user10",
+            email: "user10@example.com",
+            email_confirmation: "user10@example.com",
+            password: "user102018",
+            password_confirmation: "user102018",
           } 
         }
         expect(response).to redirect_to posts_path
