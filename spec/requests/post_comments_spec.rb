@@ -8,9 +8,11 @@ RSpec.describe "PostComments", type: :request do
     it "works successfully" do
       post_login_as(user, "1")
       expect do
-        xhr :post, post_comments_path(post_id: post1.id), comment: {
-          comment: "test"
-        }
+        post post_comments_path(post_id: post1.id),
+          params: { 
+            comment: { comment: "test"}
+          },
+          xhr: true 
       end.to change(Comment, :count).by(1)
       expect(response).to have_http_status(200)
     end
@@ -22,20 +24,23 @@ RSpec.describe "PostComments", type: :request do
       follow_redirect!
       expect(response.body).to include("Login successfully")
       expect do
-        xhr :post, post_comments_path(post_id: "100"), comment: { 
-          comment: "test",
-          }
+        post post_comments_path(post_id: "100"),
+          params: {
+            comment: { comment: "test" }
+          },
+          xhr: true
       end.not_to change(Comment, :count)
       expect(request.flash[:notice]).to include("That post couldn't be found")
     end
     
     it "because of no login" do
-      post post_comments_path(post_id: post1.id), comment: {
-        comment: "test"
-        }
+      post post_comments_path(post_id: post1.id),
+        params: {
+          comment: { comment: "test" }
+        },
+        xhr: true
       expect(response).to redirect_to login_path
-      follow_redirect!
-      expect(response.body).to include("Please login")
+      expect(request.flash[:notice]).to include("Please login")
     end
     
   end

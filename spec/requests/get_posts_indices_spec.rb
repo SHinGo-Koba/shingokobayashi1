@@ -8,8 +8,9 @@ RSpec.describe "GetPostsIndices", type: :request do
 
     it "works! (with get posts_path)" do
       get posts_path
-      puts "This is inspection for a user #{user.inspect}"
-      puts "This is inspection for posts #{user.posts.inspect}"
+      puts "This is inspection for a user of post1 #{post1.user.inspect}"
+      puts "This is inspection for a user of post2 #{post2.user.posts.inspect}"
+
       expect(response).to have_http_status(200)
     end
     

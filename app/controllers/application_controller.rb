@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
 
-  after_filter :flash_to_headers
+  after_action :flash_to_headers
 
   private
     def method_out_of_service
