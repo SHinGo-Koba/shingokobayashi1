@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessor :remember_token
+  attr_accessor :user_image_cache
   before_save { self.email = email.downcase }
   has_secure_password
 

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :confirm_login, only: [:edit, :edit_user_image]
-  before_action :correct_user, only: [:edit, :edit_user_image]
+  before_action :confirm_login, only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update]
   before_action :confirm_logout, only: [:new, :create] 
   # before_action :method_out_of_service, only: [:create] 
 
@@ -33,20 +33,28 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find_by(id: params[:id])
-    if @user.user_image_name
-      new_user_image_name = @user.user_image_name
-    else
-      new_user_image_name = "#{rand.to_s[2..8]}.jpg"
-    end
-    if params[:user_image]
-      @user.update_attribute(:user_image_name, new_user_image_name)
+    # if @user.user_image_name
+    #   new_user_image_name = @user.user_image_name
+    # else
+    #   new_user_image_name = "#{rand.to_s[2..8]}.jpg"
+    # end
+    if @user && params[:user_image]
       @user.update_attribute(:user_image, params[:user_image])
-      redirect_to("/user/#{session[:user_id]}")
+      redirect_to user_path(@user)
       flash[:notice] = "Change your image!"
     else
       flash.now[:notice] = "Failed"
-      render("/user/edit")
+      render("/users/edit")
     end
+    # if params[:user_image]
+    #   @user.update_attribute(:user_image_name, new_user_image_name)
+    #   @user.update_attribute(:user_image, params[:user_image])
+    #   redirect_to user_path(@user)
+    #   flash[:notice] = "Change your image!"
+    # else
+    #   flash.now[:notice] = "Failed"
+    #   render("/user/edit")
+    # end
   end
 
 

@@ -7,10 +7,20 @@
         <p style="font-size: 50px"><i class="fas fa-user" ></i></p>
       <% end %>
       <P style="font-size: 50px"> <%= @current_user.name %> </P>
+<%
+=begin
       <%= form_tag("/user/#{@current_user.id}", {multipart: true}) do %> 
         <input name="user_image" type="file" style="display: block" >
         <input type="submit" value="Chage your image", style:"font-size: 15px; color: rgba(0,0,0,0.6);">
       <% end %>
+=end
+%>
+      <%= form_for @current_user, html: { multipart: true } do |f| %>
+        <%= f.file_field :user_image %>
+        <%= f.hidden_field :user_image_cache %>
+        <%= f.submit "Change your image"%>
+      <%= end %>
+      
     </div>
   </div>
 </div>

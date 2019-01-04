@@ -16,7 +16,9 @@ module Workspace
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.assets.initialize_on_precompile = false
-    
+
+    config.active_record.sqlite3.represent_boolean_as_integer = true
+
     config.generators do |g|
       g.test_framework :rspec,
         view_specs: false,
