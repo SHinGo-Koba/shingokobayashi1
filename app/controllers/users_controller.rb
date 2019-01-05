@@ -29,17 +29,14 @@ class UsersController < ApplicationController
 
   
   def edit
+    @user = current_user
   end
   
   def update
     @user = User.find_by(id: params[:id])
-    # if @user.user_image_name
-    #   new_user_image_name = @user.user_image_name
-    # else
-    #   new_user_image_name = "#{rand.to_s[2..8]}.jpg"
-    # end
-    if @user && params[:user_image]
-      @user.update_attribute(:user_image, params[:user_image])
+    if @user && params[:user][:user_image]
+      @user.remove_user_image!
+      @user.update_attribute(:user_image, params[:user][:user_image])
       redirect_to user_path(@user)
       flash[:notice] = "Change your image!"
     else
@@ -63,5 +60,9 @@ class UsersController < ApplicationController
     params.fetch(:user, {}).permit(:name, :email, :email_confirmation,
     :password,:password_confirmation)
   end
+  
+  # def user_image_param
+  #   params.require(:user).permit(:user_image)
+  # end
 
 end
