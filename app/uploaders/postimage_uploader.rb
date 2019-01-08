@@ -7,9 +7,9 @@ class PostimageUploader < CarrierWave::Uploader::Base
     storage :file
   end
 
-  def filename
-    "#{rand.to_s[2..8]}.#{file.extension}" if original_filename
-  end
+  # def filename
+  #   "#{rand.to_s[2..8]}.#{file.extension}" if original_filename
+  # end
 
   def store_dir
     "uploads/#{Rails.env}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
