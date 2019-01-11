@@ -21,14 +21,17 @@ class User < ActiveRecord::Base
       message: "Someone has already used."},
     confirmation: true,
     format: { with: VALID_EMAIL_REGEX, message: " is invalid." },
-    length: { maximum: 255 }
+    length: { maximum: 255 },
+    on: :create
 
   validates :password,
     presence: { message: "Please fill out." },
-    length: { minimum: 6 }
+    length: { minimum: 6 },
+    on: create
 
   validates :email_confirmation, :password_confirmation,
-    presence: true
+    presence: true,
+    on: :create
     
   validates :user_image, {
     file_size: {

@@ -14,7 +14,7 @@ RSpec.describe "UserImageUploads", type: :request do
       
       patch user_path(user),
         params: { user: {
-          user_image: fixture_file_upload("0989752.jpg")
+          user_image: fixture_file_upload("0989752.jpg", "image/jpg")
           }
         }
       expect(response).to have_http_status(302)
@@ -31,7 +31,7 @@ RSpec.describe "UserImageUploads", type: :request do
       expect(user.reload.user_image.url).to be_blank
       patch user_path(user),
         params: { user: {
-          user_image: fixture_file_upload("0989752.jpg")
+          user_image: fixture_file_upload("0989752.jpg", "image/jpg")
           }
         }
       follow_redirect!
@@ -41,7 +41,7 @@ RSpec.describe "UserImageUploads", type: :request do
       
       patch user_path(user),
         params: { user: {
-          user_image: fixture_file_upload("6298988.jpg")
+          user_image: fixture_file_upload("6298988.jpg", "image/jpg")
           }
         }  
       expect(response).to have_http_status(302)
@@ -56,6 +56,23 @@ RSpec.describe "UserImageUploads", type: :request do
       expect(File).not_to exist("#{Rails.root}/public#{before_url}")
       expect(File).to exist("#{Rails.root}/public#{user.user_image.url}")
       
+    end
+    
+    it "dosen't work because of invalid image" do
+      post_login_as(user, "1") 
+      follow_redirect!
+      expect(response.body).to include("Login successfully")
+      expect(user.user_image.url).to be_blank
+      
+      patch user_path(user),
+        params: { user: {
+          user_image: fixture_file_upload("invalidExcessiveFile.jpg", "image/jpg")
+          }
+        }
+      expect(response).to have_http_status(200)
+      expect(response.body).to include("Failed")
+      expect(user.reload.user_image.url).to be_blank
+
     end
   end
 end

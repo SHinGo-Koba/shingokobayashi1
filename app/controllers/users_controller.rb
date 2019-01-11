@@ -34,35 +34,19 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find_by(id: params[:id])
-    if @user && params[:user][:user_image]
-      @user.remove_user_image!
-      @user.update_attribute(:user_image, params[:user][:user_image])
+    if @user.update_attributes(user_params)
       redirect_to user_path(@user)
       flash[:notice] = "Change your image!"
     else
       flash.now[:notice] = "Failed"
       render("/users/edit")
     end
-    # if params[:user_image]
-    #   @user.update_attribute(:user_image_name, new_user_image_name)
-    #   @user.update_attribute(:user_image, params[:user_image])
-    #   redirect_to user_path(@user)
-    #   flash[:notice] = "Change your image!"
-    # else
-    #   flash.now[:notice] = "Failed"
-    #   render("/user/edit")
-    # end
   end
-
 
   private
   def user_params
     params.fetch(:user, {}).permit(:name, :email, :email_confirmation,
-    :password,:password_confirmation)
+    :password,:password_confirmation, :user_image)
   end
   
-  # def user_image_param
-  #   params.require(:user).permit(:user_image)
-  # end
-
 end
