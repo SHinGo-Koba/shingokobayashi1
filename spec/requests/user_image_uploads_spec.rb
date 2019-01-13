@@ -4,6 +4,7 @@ RSpec.describe "UserImageUploads", type: :request do
   include LoginSupport
   include ActionDispatch::TestProcess::FixtureFile
   let!(:user){ FactoryBot.create(:user) }
+  let!(:user1){ FactoryBot.create(:user) }
 
   describe "POST /user_image_uploads" do
     it "works with user_image" do
@@ -21,6 +22,7 @@ RSpec.describe "UserImageUploads", type: :request do
       follow_redirect!
       expect(response).to have_http_status(200)
       expect(response.body).to include("Change your image!")
+      puts user.reload.inspect
 
       expect(user.reload.user_image.url).not_to be_blank
     end
@@ -74,5 +76,24 @@ RSpec.describe "UserImageUploads", type: :request do
       expect(user.reload.user_image.url).to be_blank
 
     end
+
+    it "dosen't work because of invalid user" do
+      post_login_as(user, "1") 
+      follow_redirect!
+      expect(response.body).to include("Login successfully")
+      expect(user.user_image.url).to be_blank
+      
+      patch user_path(user1),
+        params: { user: {
+          user_image: fixture_file_upload("0989752.jpg", "image/jpg")
+          }
+        }
+      follow_redirect!
+      expect(response).to have_http_status(200)
+      expect(response.body).to include("Invalid access")
+      expect(user.reload.user_image.url).to be_blank
+
+    end
+
   end
 end
