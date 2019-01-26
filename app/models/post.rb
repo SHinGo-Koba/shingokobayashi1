@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
   attr_accessor :post_image_cache
   belongs_to :user
-  has_many :comments
+  has_many :comments, dependent: :destroy
   mount_uploader :post_image, PostimageUploader
   
   validates :user_id, :content, presence: true
