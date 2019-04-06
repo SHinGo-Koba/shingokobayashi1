@@ -9,15 +9,15 @@
         <div class="signup-box-contents-left">
           <div class="signup-box-contents-content">
             <%= f.label :name %>
-            <%= f.text_field :name, value: @user.name %>
+            <%= f.text_field :name, value: @user.name, autocomplete: :off %>
           </div>
           <div class="signup-box-contents-content">
             <%= f.label :email %>
-            <%= f.email_field :email, value: @user.email %>
+            <%= f.email_field :email, value: @user.email, autocomplete: :off %>
           </div>
           <div class="signup-box-contents-content"> 
             <%= f.label :email_confirmation %>
-            <%= f.email_field :email_confirmation, value: @user.email_confirmation %>
+            <%= f.email_field :email_confirmation, value: @user.email_confirmation, autocomplete: :off %>
           </div>
           <div class="signup-box-contents-content">
             <%= f.label :password %>

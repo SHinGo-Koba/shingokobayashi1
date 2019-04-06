@@ -15,9 +15,12 @@
     </div>
     <% @user_posts.each do |user_post| %>
       <div class="posts-each">
-
         <%= render "shared/post", post: user_post %>
-
+        <% if current_user?(@user) %>
+          <div class="posts-each-edit">
+            <%= link_to "Delete", post_path(user_post), method: :delete, data: {confirm: "Are you sure?"}, style: "font-size: 15px; color: rgba(0,0,0,0.6);" %> 
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>

@@ -20,7 +20,7 @@ class UserimageUploader < CarrierWave::Uploader::Base
     "uploads/#{Rails.env}/tmp"
   end
 
-  process :tags => ['user_image']
+  # process :tags => ['user_image']
   
   version :standard do
     process :resize_to_fit => [300, 300, :north]
