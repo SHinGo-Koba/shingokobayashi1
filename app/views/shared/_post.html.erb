@@ -2,7 +2,7 @@
   <% if !post.user.user_image.blank? %>
     <%= image_tag(post.user.user_image.url(:thumbnail), class:"posts-each-user-image", style:"width:8%") %>
   <% else %>
-    <i class="fas fa-user" ></i>
+    <i class="fas fa-user"></i>
   <% end %>
   <%= link_to(post.user.name, "/users/#{post.user.id}", class:"btn link-user") %>
 </div>
