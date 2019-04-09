@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
   validates :name,
     presence: { message: "Please fill out." },
     uniqueness: { message: "Someone has already used." },
-    length: { maximum: 25 }
+    length: { maximum: 25 },
+    on: :create
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, 
@@ -27,7 +28,7 @@ class User < ActiveRecord::Base
   validates :password,
     presence: { message: "Please fill out." },
     length: { minimum: 6 },
-    on: create
+    on: :create
 
   validates :email_confirmation, :password_confirmation,
     presence: true,

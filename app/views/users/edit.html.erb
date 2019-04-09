@@ -8,14 +8,7 @@
       <% end %>
       <P style="font-size: 50px"> <%= @user.name %> </P>
 
-<% if false %>
-      <%= form_tag("/user/#{@user.id}", {multipart: true}) do %> 
-        <input name="user_image" type="file" style="display: block" >
-        <input type="submit" value="Chage your image", style:"font-size: 15px; color: rgba(0,0,0,0.6);">
-      <% end %>
-<% end %>
-
-      <%= form_for @user, url: user_path, multipart: true do |f| %>
+      <%= form_for(@user, url: user_path, multipart: true) do |f| %>
         <%= f.file_field :user_image %>
         <%= f.hidden_field :user_image_cache %>
         <%= f.submit "Change your image" %>

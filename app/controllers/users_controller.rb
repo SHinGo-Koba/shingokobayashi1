@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   before_action :confirm_login, only: [:edit, :update]
   before_action :correct_user, only: [:edit, :update]
-  before_action :confirm_logout, only: [:new, :create] 
-  # before_action :method_out_of_service, only: [:create] 
+  before_action :confirm_logout, only: [:new, :create]
+  before_action :method_out_of_service, only: [:update] 
 
   def new
     @user = User.new
@@ -45,8 +45,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.fetch(:user, {}).permit(:name, :email, :email_confirmation,
-    :password,:password_confirmation, :user_image)
+    params.require(:user).permit(:name, :email, :email_confirmation, :password, :password_confirmation, :user_image)
   end
   
 end
