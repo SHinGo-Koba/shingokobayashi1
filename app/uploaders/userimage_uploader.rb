@@ -17,7 +17,7 @@ class UserimageUploader < CarrierWave::Uploader::Base
   
 
   # process :tags => ['user_image']
-  process :resize_to_fit => [350,350]
+  # process :resize_to_fit => [350,350]
   
   # version :standard do
   #   process :resize_to_fit => [300, 300, :north]
