@@ -1,7 +1,7 @@
 class PostimageUploader < CarrierWave::Uploader::Base
 
   if Rails.env.production?
-    include Cloudinary::CarrierWave
+    include Cloudinary::CarrierWave::MiniMagick
   else
     include CarrierWave::MiniMagick
     storage :file

@@ -37,7 +37,7 @@ class PostsController < ApplicationController
   
   private
     def post_params
-      params.require(:post).permit(:content,{post_image: []}).merge(user_id: session[:user_id])
+      params.require(:post).permit(:content, :post_image).merge(user_id: session[:user_id])
     end
 
     def forbid_access_posts
