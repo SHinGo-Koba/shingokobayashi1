@@ -72,7 +72,7 @@ GEM
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
     climate_control (0.2.0)
-    cloudinary (1.11.0)
+    cloudinary (1.11.1)
       aws_cf_signer
       rest-client
     coffee-rails (4.2.2)
@@ -140,7 +140,7 @@ GEM
     method_source (0.9.2)
     mime-types (3.2.2)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2018.0812)
+    mime-types-data (3.2019.0331)
     mimemagic (0.3.3)
     mini_magick (4.9.2)
     mini_mime (1.0.1)
