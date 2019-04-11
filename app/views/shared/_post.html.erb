@@ -1,6 +1,6 @@
 <div class="posts-each-user-info">
   <% if !post.user.user_image.blank? %>
-    <%= image_tag(post.user.user_image.url(:thumbnail), class:"posts-each-user-image", style:"width:8%") %>
+    <%= image_tag(post.user.user_image.url, class:"posts-each-user-image", style:"width:8%") %>
   <% else %>
     <i class="fas fa-user"></i>
   <% end %>

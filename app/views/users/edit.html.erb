@@ -1,14 +1,14 @@
 <div class="main posts-index">
   <div class="container">
     <div class="user-info">
-      <% if @user.user_image_name %>
-        <%= image_tag(@user.user_image_url(:standard), class:"posts-each-user-image", style:"width=10vw;") %>
+      <% if !@user.user_image.blank? %>
+        <%= image_tag(@user.user_image.url, class: "posts-each-user-image", style:"width=10vw;") %>
       <% else %>
         <p style="font-size: 50px"><i class="fas fa-user" ></i></p>
       <% end %>
       <P style="font-size: 50px"> <%= @user.name %> </P>
 
-      <%= form_for(@user, url: user_path, multipart: true) do |f| %>
+      <%= form_for @user, html: { multipart: true } do |f| %>
         <%= f.file_field :user_image %>
         <%= f.hidden_field :user_image_cache %>
         <%= f.submit "Change your image" %>
