@@ -5,20 +5,16 @@ class UserimageUploader < CarrierWave::Uploader::Base
   else
     include CarrierWave::MiniMagick
     storage :file
+
+    def store_dir
+      "uploads/#{Rails.env}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    end
+
+    def cache_dir
+      "uploads/#{Rails.env}/tmp"
+    end
   end
   
-  ## temporary comment out
-  # def filename
-  #   "#{rand.to_s[2..8]}.#{file.extension}" if original_filename
-  # end
-
-  def store_dir
-    "uploads/#{Rails.env}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
-
-  def cache_dir
-    "uploads/#{Rails.env}/tmp"
-  end
 
   # process :tags => ['user_image']
   process :resize_to_fit => [350,350]
