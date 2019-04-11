@@ -15,6 +15,6 @@ class UserimageUploader < CarrierWave::Uploader::Base
     end
   end
   
-  process :resize_to_fit => [350, 350]
+  # process :resize_to_fit => [350, 350]
 
 end
