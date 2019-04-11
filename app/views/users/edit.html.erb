@@ -8,7 +8,7 @@
       <% end %>
       <P style="font-size: 50px"> <%= @user.name %> </P>
 
-      <%= form_for @user, html: { multipart: true } do |f| %>
+      <%= form_for @user, url: user_path, html: { multipart: true } do |f| %>
         <%= f.file_field :user_image %>
         <%= f.hidden_field :user_image_cache %>
         <%= f.submit "Change your image" %>
