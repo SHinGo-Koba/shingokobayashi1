@@ -23,8 +23,9 @@ end
 
 group :production do
   gem 'pg','~> 0.20'
-  gem 'cloudinary'
+  gem 'cloudinary', require: false
   gem 'thin'
+  gem 'activestorage-cloudinary-service'
 end
 
 gem 'bootsnap', '~> 1.3.0', require: false
