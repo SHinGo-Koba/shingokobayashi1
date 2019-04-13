@@ -1,6 +1,6 @@
 <div class="posts-each-user-info">
   <% if !post.user.user_image.blank? %>
-    <%= image_tag(post.user.user_image.url, class:"posts-each-user-image", style:"width:8%") %>
+    <%= image_tag(post.user.user_image_url.to_s, class:"posts-each-user-image", style:"width:8%") %>
   <% else %>
     <i class="fas fa-user"></i>
   <% end %>
@@ -8,7 +8,7 @@
 </div>
 <% if !post.post_image.blank? %>
   <div class="posts-each-photo">
-    <%= image_tag(post.post_image.url, style:"width:100%") %>
+    <%= image_tag(post.post_image_url.to_s, style:"width:100%") %>
   </div>
 <% end %>
 <div class="posts-each-content">

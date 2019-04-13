@@ -33,21 +33,9 @@ class UsersController < ApplicationController
   end
   
   def update
-    # @user = User.find_by(id: params[:id])
-    # @user.user_image = params[:user][:user_image]
-    # if @user.valid?
-    #   @user.save!
-    #   redirect_to user_path(@user)
-    #   flash[:notice] = "Change your image!"
-    # else
-    #   flash.now[:notice] = "Failed"
-    #   render("/users/edit")
-    # end
-
     @user = User.find_by(id: params[:id])
     User.transaction do
       @user.remove_user_image
-      # @user.user_image = params[:user][:user_image]
       @user.update_attributes!(user_params)
     end
     redirect_to user_path(@user)
@@ -57,13 +45,6 @@ class UsersController < ApplicationController
       render("/users/edit")
       puts "#{e.class}: #{e.message}"
       puts e.backtrace
-    # if @user.update_attributes(user_params)
-    #   redirect_to user_path(@user)
-    #   flash[:notice] = "Change your image!"
-    # else
-    #   flash.now[:notice] = "Failed"
-    #   render("/users/edit")
-    # end
   end
 
   private
