@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root "home#index"  
+
   get "login", to: "sessions#new"
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
@@ -14,7 +16,5 @@ Rails.application.routes.draw do
   resources :posts, except: [:edit, :update] do
     resources :comments, shallow: true, only: [:create, :destroy]
   end
-
-  root "home#index"  
 
 end
